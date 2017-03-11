@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CRomAppWhitelist.iml" filepath="$PROJECT_DIR$/CRomAppWhitelist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cromappwhitelist/cromappwhitelist.iml" filepath="$PROJECT_DIR$/cromappwhitelist/cromappwhitelist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitelistsample/whitelistsample.iml" filepath="$PROJECT_DIR$/whitelistsample/whitelistsample.iml" />
+    </modules>
+  </component>
+</project>
