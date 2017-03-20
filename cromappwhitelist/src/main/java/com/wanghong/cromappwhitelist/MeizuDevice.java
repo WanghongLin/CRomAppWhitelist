@@ -25,7 +25,7 @@ import android.content.ComponentName;
 public class MeizuDevice extends AbstractDevice {
     @Override
     protected ComponentName componentForAutoStartSetting() {
-        return null;
+        return new ComponentName("com.meizu.safe", "com.meizu.safe.permission.SmartBGActivity");
     }
 
     @Override
@@ -40,6 +40,6 @@ public class MeizuDevice extends AbstractDevice {
 
     @Override
     protected ComponentName componentForNotificationSetting() {
-        return null;
+        return new ComponentName("com.meizu.safe", "com.meizu.safe.permission.NotificationActivity");
     }
 }
