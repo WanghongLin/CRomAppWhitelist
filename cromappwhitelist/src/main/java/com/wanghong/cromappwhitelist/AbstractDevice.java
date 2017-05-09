@@ -30,6 +30,8 @@ import android.widget.Toast;
 public abstract class AbstractDevice {
 
     private static final String TAG = "AbstractDevice";
+    private Intent extrasHolderIntent = new Intent();
+    private Context context;
 
     /**
      * Perform auto start settings<br/>
@@ -52,6 +54,7 @@ public abstract class AbstractDevice {
      * @param context the activity context
      */
     public void performAutoStartSetting(Context context) {
+        this.context = context;
         performStartActivity(context, componentForAutoStartSetting());
     }
 
@@ -65,10 +68,12 @@ public abstract class AbstractDevice {
      * @param context the activity context
      */
     public void performBatterySaverSetting(Context context) {
+        this.context = context;
         performStartActivity(context, componentForBatterySaverSetting());
     }
 
     public void performMemoryAccelerationSetting(Context context) {
+        this.context = context;
         performStartActivity(context, componentForMemoryAccelerationSetting());
     }
 
@@ -84,6 +89,7 @@ public abstract class AbstractDevice {
      * @param context the activity context
      */
     public void performNotificationSetting(Context context) {
+        this.context = context;
         performStartActivity(context, componentForNotificationSetting());
     }
 
@@ -92,6 +98,7 @@ public abstract class AbstractDevice {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_LAUNCHER);
             intent.setComponent(component);
+            intent.putExtras(getExtrasHolderIntent());
             if (intent.resolveActivity(context.getPackageManager()) != null) {
                 try {
                     context.startActivity(intent);
@@ -124,4 +131,12 @@ public abstract class AbstractDevice {
     abstract protected ComponentName componentForMemoryAccelerationSetting();
 
     abstract protected ComponentName componentForNotificationSetting();
+
+    protected Intent getExtrasHolderIntent() {
+        return extrasHolderIntent;
+    }
+
+    protected Context getContext() {
+        return context;
+    }
 }

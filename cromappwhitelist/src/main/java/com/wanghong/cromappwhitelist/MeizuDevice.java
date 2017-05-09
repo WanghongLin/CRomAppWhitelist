@@ -17,6 +17,7 @@
 package com.wanghong.cromappwhitelist;
 
 import android.content.ComponentName;
+import android.os.Build;
 
 /**
  * Created by wanghong on 3/2/17.
@@ -30,7 +31,11 @@ public class MeizuDevice extends AbstractDevice {
 
     @Override
     protected ComponentName componentForBatterySaverSetting() {
-        return new ComponentName("com.meizu.safe", "com.meizu.safe.powerui.PowerAppPermissionActivity");
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && Build.MODEL.equals("MX4")) {
+            return new ComponentName("com.meizu.safe", "com.meizu.safe.powerui.PowerAppPermissionActivity");
+        }
+        getExtrasHolderIntent().putExtra("packageName", getContext().getPackageName());
+        return new ComponentName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
     }
 
     @Override
@@ -40,6 +45,10 @@ public class MeizuDevice extends AbstractDevice {
 
     @Override
     protected ComponentName componentForNotificationSetting() {
-        return new ComponentName("com.meizu.safe", "com.meizu.safe.permission.NotificationActivity");
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && Build.MODEL.equals("MX4")) {
+            return new ComponentName("com.meizu.safe", "com.meizu.safe.permission.NotificationActivity");
+        }
+        getExtrasHolderIntent().putExtra("packageName", getContext().getPackageName());
+        return new ComponentName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
     }
 }
