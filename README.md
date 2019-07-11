@@ -1,7 +1,9 @@
-# CRomAppWhitelist
+CRomAppWhitelist
+======
 Quick setting to add your app to whitelist for Chinese Android ROM
 
-#### Reason to create this project
+Motivation behind this project
+------
 
 Because the open of Android ecosystem and the absence of Google services in Chinese market, the Android ROM manufatured by Chinese company has a big different with the others in other part of the world.
 
@@ -13,7 +15,8 @@ They are deeply customized Android, when your application run on this devices, y
 
 If your app is not covering thousands and millions of users, like `Wechat`, your app is not on the whiltelist of the phone manufacture. So the only way is telling the user and guide them to add your app to the whiltelist, if your app's main features rely on some features which are disable by the ROMs.
 
-#### How to use
+How to use
+------
 
 ```java
    AppWhitelist.settingForAutoStart(this);
@@ -26,7 +29,7 @@ Will guide the user (with a `Intent` to start the `Activity`) to setting and add
 The component name of these activities usually obtained with the following command which run in the device shell
 
 ```sh
-$ dumpsys activity activities |grep Focused
+$ adb shell dumpsys activity activities |grep Focused
 ```
 
 Currently tested devices
@@ -38,3 +41,17 @@ Currently tested devices
 * Huawei
 
 Patches for more devices are welcome!
+
+License
+------
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
