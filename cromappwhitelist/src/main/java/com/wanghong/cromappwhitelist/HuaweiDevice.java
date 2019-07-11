@@ -17,6 +17,7 @@
 package com.wanghong.cromappwhitelist;
 
 import android.content.ComponentName;
+import android.os.Build;
 
 /**
  * Created by wanghong on 3/2/17.
@@ -26,6 +27,9 @@ public class HuaweiDevice extends AbstractDevice {
 
     @Override
     protected ComponentName componentForAutoStartSetting() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return new ComponentName("com.huawei.systemmanager", "com.huawei.systemmanager.appcontrol.activity.StartupAppControlActivity");
+        }
         return new ComponentName("com.huawei.systemmanager", "com.huawei.systemmanager.optimize.bootstart.BootStartActivity");
     }
 
@@ -41,6 +45,6 @@ public class HuaweiDevice extends AbstractDevice {
 
     @Override
     protected ComponentName componentForNotificationSetting() {
-        return null;
+        return new ComponentName("com.huawei.systemmanager", "com.huawei.notificationmanager.ui.NotificationManagmentActivity");
     }
 }

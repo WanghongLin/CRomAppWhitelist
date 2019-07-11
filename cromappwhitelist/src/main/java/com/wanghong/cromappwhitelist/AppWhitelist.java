@@ -18,6 +18,7 @@ package com.wanghong.cromappwhitelist;
 
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.NonNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,48 +30,54 @@ import java.util.Map;
 public class AppWhitelist {
 
     private static final Map<String, Class<? extends AbstractDevice>> DEVICES_CLASS_MAP = new HashMap<>();
+    private static final Map<Class, AbstractDevice> MANUFACTURE_CACHE_MAP = new HashMap<>();
 
     static {
         DEVICES_CLASS_MAP.put("XIAOMI", XiaomiDevice.class);
         DEVICES_CLASS_MAP.put("HUAWEI", HuaweiDevice.class);
         DEVICES_CLASS_MAP.put("MEIZU", MeizuDevice.class);
         DEVICES_CLASS_MAP.put("OPPO", OppoDevice.class);
-        DEVICES_CLASS_MAP.put("SAMSUNG", Samsung.class);
+        DEVICES_CLASS_MAP.put("SAMSUNG", SamsungDevice.class);
     }
 
-    private static <T extends AbstractDevice> T createForDevice(Class<? extends T> clz) {
+    private @NonNull static <T extends AbstractDevice> T createForDevice(Class<? extends T> clz) {
+        if (clz == null) {
+            return (T) new DefaultDevice();
+        }
+
+        AbstractDevice manufacture = MANUFACTURE_CACHE_MAP.get(clz);
+        if (manufacture != null) {
+            return (T) manufacture;
+        }
+
         try {
-            return clz.newInstance();
+            T result = clz.newInstance();
+            MANUFACTURE_CACHE_MAP.put(clz, result);
+            return result;
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
 
-        return null;
+        DefaultDevice defaultDevice = new DefaultDevice();
+        MANUFACTURE_CACHE_MAP.put(clz, defaultDevice);
+        return (T) defaultDevice;
     }
 
     public static void settingForAutoStart(Context context) {
-        if (DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase()) != null) {
-            createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performAutoStartSetting(context);
-        }
+        createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performAutoStartSetting(context);
     }
 
     public static void settingForBatterySaver(Context context) {
-        if (DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase()) != null) {
-            createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performBatterySaverSetting(context);
-        }
+        createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performBatterySaverSetting(context);
     }
 
     public static void settingForMemoryAcceleration(Context context) {
-        if (DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase()) != null) {
-            createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performMemoryAccelerationSetting(context);
-        }
+        createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performMemoryAccelerationSetting(context);
     }
 
     public static void settingForNotification(Context context) {
-        if (DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase()) != null) {
-            createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performNotificationSetting(context);
-        }
+        createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performNotificationSetting(context);
     }
 }

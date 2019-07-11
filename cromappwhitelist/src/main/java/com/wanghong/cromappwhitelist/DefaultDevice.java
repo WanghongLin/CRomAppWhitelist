@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 wanghong
+ * Copyright (C) 2019 wanghonglin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,9 @@ package com.wanghong.cromappwhitelist;
 import android.content.ComponentName;
 
 /**
- * Created by wanghong on 3/3/17.
+ * Created by wanghonglin on 2019-07-11 14:36.
  */
-
-public class Samsung extends AbstractDevice {
+public class DefaultDevice extends AbstractDevice {
     @Override
     protected ComponentName componentForAutoStartSetting() {
         return null;

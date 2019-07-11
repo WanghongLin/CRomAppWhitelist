@@ -109,6 +109,8 @@ public abstract class AbstractDevice {
                     Log.e(TAG, "performStartActivity: not exported");
                     e.printStackTrace();
                 }
+            } else {
+                Log.e(TAG, "performStartActivity: could not resolve the component " + component.toShortString());
             }
         } else {
             if (component == null) {
@@ -120,6 +122,10 @@ public abstract class AbstractDevice {
         }
     }
 
+    /**
+     * Provide component for auto start setting
+     * @return a component or null if this feature is absent in the implemented device
+     */
     abstract protected ComponentName componentForAutoStartSetting();
 
     /**
@@ -128,8 +134,16 @@ public abstract class AbstractDevice {
      */
     abstract protected ComponentName componentForBatterySaverSetting();
 
+    /**
+     * Provide component for memory acceleration setting
+     * @return a component to start the settings or null if this feature is absent in the implemented device
+     */
     abstract protected ComponentName componentForMemoryAccelerationSetting();
 
+    /**
+     * Provide component for notification settings
+     * @return a component to perform notification setting or null if such feature is not available
+     */
     abstract protected ComponentName componentForNotificationSetting();
 
     protected Intent getExtrasHolderIntent() {

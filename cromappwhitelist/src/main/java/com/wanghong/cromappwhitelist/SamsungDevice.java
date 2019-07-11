@@ -19,19 +19,18 @@ package com.wanghong.cromappwhitelist;
 import android.content.ComponentName;
 
 /**
- * Created by wanghong on 3/2/17.
+ * Created by wanghong on 3/3/17.
  */
 
-public class XiaomiDevice extends AbstractDevice {
-
+public class SamsungDevice extends AbstractDevice {
     @Override
     protected ComponentName componentForAutoStartSetting() {
-        return new ComponentName("com.miui.securitycenter", "com.miui.permcenter.autostart.AutoStartManagementActivity");
+        return null;
     }
 
     @Override
     protected ComponentName componentForBatterySaverSetting() {
-        return new ComponentName("com.miui.powerkeeper", "com.miui.powerkeeper.ui.HiddenAppsContainerManagementActivity");
+        return null;
     }
 
     @Override
@@ -41,6 +40,6 @@ public class XiaomiDevice extends AbstractDevice {
 
     @Override
     protected ComponentName componentForNotificationSetting() {
-        return new ComponentName("com.miui.notification", "miui.notification.management.activity.NotificationAppListActivity");
+        return null;
     }
 }
