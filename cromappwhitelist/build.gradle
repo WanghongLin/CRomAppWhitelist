@@ -15,6 +15,20 @@
  */
 
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    def groupProjectID = 'com.wanghong.cromappwhitelist'
+    def artifactProjectID = 'crom-app-whitelist'
+    def publishVersionID = '0.1.0'
+
+    userOrg = 'wanghonglin'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'Quick setting to add your app to whitelist for Chinese Android ROM'
+    website = 'https://github.com/WanghongLin/CRomAppWhitelist'
+}
 
 android {
     compileSdkVersion 28

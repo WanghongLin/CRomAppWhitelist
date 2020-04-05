@@ -18,6 +18,14 @@ If your app is not covering thousands and millions of users, like `Wechat`, your
 How to use
 ------
 
+This library has been published to jCenter, just apply following dependency in your gradle file
+
+```gradle
+implementation 'com.wanghong.cromappwhitelist:crom-app-whitelist:0.1.0'
+```
+
+Then the following code will navigate you the the specific whitelist feature settings.
+
 ```java
    AppWhitelist.settingForAutoStart(this);
    AppWhitelist.settingForBatterySaver(this);

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CRomAppWhitelist.iml" filepath="$PROJECT_DIR$/CRomAppWhitelist.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cromappwhitelist/cromappwhitelist.iml" filepath="$PROJECT_DIR$/cromappwhitelist/cromappwhitelist.iml" />
-      <module fileurl="file://$PROJECT_DIR$/whitelistsample/whitelistsample.iml" filepath="$PROJECT_DIR$/whitelistsample/whitelistsample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CRomAppWhitelist.iml" filepath="$PROJECT_DIR$/CRomAppWhitelist.iml" group="CRomAppWhitelist" />
+      <module fileurl="file://$PROJECT_DIR$/cromappwhitelist/cromappwhitelist.iml" filepath="$PROJECT_DIR$/cromappwhitelist/cromappwhitelist.iml" group="CRomAppWhitelist/cromappwhitelist" />
+      <module fileurl="file://$PROJECT_DIR$/whitelistsample/whitelistsample.iml" filepath="$PROJECT_DIR$/whitelistsample/whitelistsample.iml" group="CRomAppWhitelist/whitelistsample" />
     </modules>
   </component>
 </project>

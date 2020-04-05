@@ -59,6 +59,7 @@ public abstract class AbstractDevice {
     }
 
     /**
+     * Perform battery saving settings
      * <ul>
      *     <li>Meizu: Settings -> Battery -> More modes -> Standby management</li>
      *     <li>Oppo: Settings -> Battery -> Energy Saver</li>
@@ -72,12 +73,17 @@ public abstract class AbstractDevice {
         performStartActivity(context, componentForBatterySaverSetting());
     }
 
+    /**
+     * Performance memory acceleration settings, make your app won't kill when user click clean memory
+     * @param context the activity context
+     */
     public void performMemoryAccelerationSetting(Context context) {
         this.context = context;
         performStartActivity(context, componentForMemoryAccelerationSetting());
     }
 
     /**
+     * Perform notification settings, make you app can show notification
      * <ul>
      *     <li>Xiaomi: no way to set, it's managed under <b>com.android.settings/.SubSettings</b></li>
      *     <li>Oppo: Settings -> Notification and status bar -> Notification manager</li>
