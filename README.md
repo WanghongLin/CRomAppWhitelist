@@ -1,6 +1,6 @@
 CRomAppWhitelist
 ======
-[ ![Download](https://api.bintray.com/packages/wanghonglin/maven/crom-app-whitelist/images/download.svg?version=0.1.0) ](https://bintray.com/wanghonglin/maven/crom-app-whitelist/0.1.0/link)
+[ ![Download](https://api.bintray.com/packages/wanghonglin/maven/crom-app-whitelist/images/download.svg?version=0.1.1) ](https://bintray.com/wanghonglin/maven/crom-app-whitelist/0.1.1/link)
 
 Quick setting to add your app to whitelist for Chinese Android ROM
 
