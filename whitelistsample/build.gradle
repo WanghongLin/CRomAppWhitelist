@@ -43,7 +43,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.wanghong.cromappwhitelist:crom-app-whitelist:0.1.0'
+    implementation 'com.wanghong.cromappwhitelist:crom-app-whitelist:0.1.1'
     testImplementation 'junit:junit:4.12'
     // implementation project(':cromappwhitelist')
 }

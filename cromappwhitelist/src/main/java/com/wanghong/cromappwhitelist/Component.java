@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 wanghong
+ * Copyright (C) 2020 mutter
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,30 +16,29 @@
 
 package com.wanghong.cromappwhitelist;
 
-import android.content.ComponentName;
+public class Component {
 
-/**
- * Created by wanghong on 3/3/17.
- */
+    private String pkg;
+    private String cls;
 
-public class SamsungDevice extends AbstractDevice {
-    @Override
-    protected ComponentName componentForAutoStartSetting() {
-        return null;
+    public Component(String pkg, String cls) {
+        this.pkg = pkg;
+        this.cls = cls;
     }
 
-    @Override
-    protected ComponentName componentForBatterySaverSetting() {
-        return null;
+    public String getPkg() {
+        return pkg;
     }
 
-    @Override
-    protected ComponentName componentForMemoryAccelerationSetting() {
-        return null;
+    public void setPkg(String pkg) {
+        this.pkg = pkg;
     }
 
-    @Override
-    protected ComponentName componentForNotificationSetting() {
-        return null;
+    public String getCls() {
+        return cls;
+    }
+
+    public void setCls(String cls) {
+        this.cls = cls;
     }
 }

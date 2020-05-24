@@ -32,6 +32,13 @@ public abstract class AbstractDevice {
     private static final String TAG = "AbstractDevice";
     private Intent extrasHolderIntent = new Intent();
     private Context context;
+    private AppWhitelistConfig whitelistConfig;
+
+    private void ensureWhitelistConfig() {
+        if (whitelistConfig == null) {
+            whitelistConfig = new AppWhitelistConfig(context);
+        }
+    }
 
     /**
      * Perform auto start settings<br/>
@@ -55,6 +62,7 @@ public abstract class AbstractDevice {
      */
     public void performAutoStartSetting(Context context) {
         this.context = context;
+        ensureWhitelistConfig();
         performStartActivity(context, componentForAutoStartSetting());
     }
 
@@ -70,6 +78,7 @@ public abstract class AbstractDevice {
      */
     public void performBatterySaverSetting(Context context) {
         this.context = context;
+        ensureWhitelistConfig();
         performStartActivity(context, componentForBatterySaverSetting());
     }
 
@@ -79,6 +88,7 @@ public abstract class AbstractDevice {
      */
     public void performMemoryAccelerationSetting(Context context) {
         this.context = context;
+        ensureWhitelistConfig();
         performStartActivity(context, componentForMemoryAccelerationSetting());
     }
 
@@ -96,6 +106,7 @@ public abstract class AbstractDevice {
      */
     public void performNotificationSetting(Context context) {
         this.context = context;
+        ensureWhitelistConfig();
         performStartActivity(context, componentForNotificationSetting());
     }
 
@@ -132,31 +143,39 @@ public abstract class AbstractDevice {
      * Provide component for auto start setting
      * @return a component or null if this feature is absent in the implemented device
      */
-    abstract protected ComponentName componentForAutoStartSetting();
+    protected ComponentName componentForAutoStartSetting() {
+        return whitelistConfig.componentNameForAutoStart(context);
+    }
 
     /**
      * Special case: it's called "Protected Apps" in Huawei device
      * @return a component to start activity
      */
-    abstract protected ComponentName componentForBatterySaverSetting();
+    protected ComponentName componentForBatterySaverSetting() {
+        return whitelistConfig.componentNameForBatterySaver(context);
+    }
 
     /**
      * Provide component for memory acceleration setting
      * @return a component to start the settings or null if this feature is absent in the implemented device
      */
-    abstract protected ComponentName componentForMemoryAccelerationSetting();
+    protected ComponentName componentForMemoryAccelerationSetting() {
+        return whitelistConfig.componentNameForMemAcc(context);
+    }
 
     /**
      * Provide component for notification settings
      * @return a component to perform notification setting or null if such feature is not available
      */
-    abstract protected ComponentName componentForNotificationSetting();
+    protected ComponentName componentForNotificationSetting() {
+        return whitelistConfig.componentNameForNotification(context);
+    }
 
-    protected Intent getExtrasHolderIntent() {
+    Intent getExtrasHolderIntent() {
         return extrasHolderIntent;
     }
 
-    protected Context getContext() {
+    Context getContext() {
         return context;
     }
 }

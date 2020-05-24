@@ -1,0 +1,69 @@
+{
+  "auto_start": [
+    {
+      "pkg": "com.huawei.systemmanager",
+      "cls": "com.huawei.systemmanager.optimize.bootstart.BootStartActivity"
+    },
+    {
+      "pkg": "com.meizu.safe",
+      "cls": "com.meizu.safe.permission.SmartBGActivity"
+    },
+    {
+      "pkg": "com.huawei.systemmanager",
+      "cls": "com.miui.permcenter.autostart.AutoStartManagementActivity"
+    }
+  ],
+  "battery_saver": [
+    {
+      "pkg": "com.huawei.systemmanager",
+      "cls": "com.huawei.systemmanager.optimize.process.ProtectActivity"
+    },
+    {
+      "pkg": "com.meizu.safe",
+      "cls": "com.meizu.safe.powerui.PowerAppPermissionActivity"
+    }, {
+      "pkg": "com.meizu.safe",
+      "cls": "com.meizu.safe.security.AppSecActivity"
+    },
+    {
+      "pkg": "com.coloros.oppoguardelf",
+      "cls": "com.coloros.powermanager.fuelgaue.PowerUsageModelActivity"
+    },
+    {
+      "pkg": "com.miui.powerkeeper",
+      "cls": "com.miui.powerkeeper.ui.HiddenAppsContainerManagementActivity"
+    },
+    {
+      "pkg": "com.miui.powerkeeper",
+      "cls": "com.miui.powerkeeper.ui.HiddenAppsConfigActivity"
+    }
+  ],
+  "mem_acc": [
+    {
+      "pkg": "com.meizu.safe",
+      "cls": "com.meizu.safe.ramcleaner.RAMCleanerWhiteList"
+    }
+  ],
+  "notification": [
+    {
+      "pkg": "com.huawei.systemmanager",
+      "cls": "com.huawei.notificationmanager.ui.NotificationManagmentActivity"
+    },
+    {
+      "pkg": "com.meizu.safe",
+      "cls": "com.meizu.safe.permission.NotificationActivity"
+    },
+    {
+      "pkg": "com.meizu.safe",
+      "cls": "com.meizu.safe.security.AppSecActivity"
+    },
+    {
+      "pkg": "com.coloros.notificationmanager",
+      "cls": "com.coloros.notificationmanager.NotificationCenterActivity"
+    },
+    {
+      "pkg": "com.miui.notification",
+      "cls": "miui.notification.management.activity.NotificationAppListActivity"
+    }
+  ]
+}

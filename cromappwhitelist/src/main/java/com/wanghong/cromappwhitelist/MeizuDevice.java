@@ -17,7 +17,6 @@
 package com.wanghong.cromappwhitelist;
 
 import android.content.ComponentName;
-import android.os.Build;
 
 /**
  * Created by wanghong on 3/2/17.
@@ -25,30 +24,14 @@ import android.os.Build;
 
 public class MeizuDevice extends AbstractDevice {
     @Override
-    protected ComponentName componentForAutoStartSetting() {
-        return new ComponentName("com.meizu.safe", "com.meizu.safe.permission.SmartBGActivity");
-    }
-
-    @Override
     protected ComponentName componentForBatterySaverSetting() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && Build.MODEL.equals("MX4")) {
-            return new ComponentName("com.meizu.safe", "com.meizu.safe.powerui.PowerAppPermissionActivity");
-        }
         getExtrasHolderIntent().putExtra("packageName", getContext().getPackageName());
-        return new ComponentName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
-    }
-
-    @Override
-    protected ComponentName componentForMemoryAccelerationSetting() {
-        return new ComponentName("com.meizu.safe", "com.meizu.safe.ramcleaner.RAMCleanerWhiteList");
+        return super.componentForBatterySaverSetting();
     }
 
     @Override
     protected ComponentName componentForNotificationSetting() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && Build.MODEL.equals("MX4")) {
-            return new ComponentName("com.meizu.safe", "com.meizu.safe.permission.NotificationActivity");
-        }
         getExtrasHolderIntent().putExtra("packageName", getContext().getPackageName());
-        return new ComponentName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
+        return super.componentForNotificationSetting();
     }
 }

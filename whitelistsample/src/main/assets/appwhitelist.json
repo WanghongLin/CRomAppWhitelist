@@ -1,0 +1,12 @@
+{
+  "auto_start": [{
+    "pkg": "com.huawei.systemmanager",
+    "cls": "com.huawei.systemmanager.appcontrol.activity.StartupAppControlActivity"
+  }, {
+    "pkg": "com.huawei.xxx",
+    "cls": "com.huawei.xxx.XActivity"
+  }],
+  "battery_saver": [],
+  "mem_acc": [],
+  "notification": []
+}

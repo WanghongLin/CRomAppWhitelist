@@ -33,18 +33,11 @@ public class AppWhitelist {
     private static final Map<Class, AbstractDevice> MANUFACTURE_CACHE_MAP = new HashMap<>();
 
     static {
-        DEVICES_CLASS_MAP.put("XIAOMI", XiaomiDevice.class);
-        DEVICES_CLASS_MAP.put("HUAWEI", HuaweiDevice.class);
         DEVICES_CLASS_MAP.put("MEIZU", MeizuDevice.class);
-        DEVICES_CLASS_MAP.put("OPPO", OppoDevice.class);
-        DEVICES_CLASS_MAP.put("SAMSUNG", SamsungDevice.class);
+        MANUFACTURE_CACHE_MAP.put(null, new DefaultDevice());
     }
 
     private @NonNull static <T extends AbstractDevice> T createForDevice(Class<? extends T> clz) {
-        if (clz == null) {
-            return (T) new DefaultDevice();
-        }
-
         AbstractDevice manufacture = MANUFACTURE_CACHE_MAP.get(clz);
         if (manufacture != null) {
             return (T) manufacture;
@@ -65,18 +58,34 @@ public class AppWhitelist {
         return (T) defaultDevice;
     }
 
+    /**
+     * Go to setting for auto start
+     * @param context activity context
+     */
     public static void settingForAutoStart(Context context) {
         createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performAutoStartSetting(context);
     }
 
+    /**
+     * Go to setting for battery saver
+     * @param context activity context
+     */
     public static void settingForBatterySaver(Context context) {
         createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performBatterySaverSetting(context);
     }
 
+    /**
+     * Go to setting for memory acceleration
+     * @param context activity context
+     */
     public static void settingForMemoryAcceleration(Context context) {
         createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performMemoryAccelerationSetting(context);
     }
 
+    /**
+     * Go to setting for notification
+     * @param context activity context
+     */
     public static void settingForNotification(Context context) {
         createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performNotificationSetting(context);
     }

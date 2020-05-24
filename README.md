@@ -21,23 +21,23 @@ How to use
 This library has been published to jCenter, just apply following dependency in your gradle file
 
 ```gradle
-implementation 'com.wanghong.cromappwhitelist:crom-app-whitelist:0.1.0'
+implementation 'com.wanghong.cromappwhitelist:crom-app-whitelist:0.1.1'
 ```
 
 Then the following code will navigate you the the specific whitelist feature settings.
 
 ```java
-   AppWhitelist.settingForAutoStart(this);
-   AppWhitelist.settingForBatterySaver(this);
-   AppWhitelist.settingForMemoryAcceleration(this);
-   AppWhitelist.settingForNotification(this);
+AppWhitelist.settingForAutoStart(this);
+AppWhitelist.settingForBatterySaver(this);
+AppWhitelist.settingForMemoryAcceleration(this);
+AppWhitelist.settingForNotification(this);
 ```
 Will guide the user (with a `Intent` to start the `Activity`) to setting and add to the whiltelist if the device has these features.
 
 The component name of these activities usually obtained with the following command which run in the device shell
 
 ```sh
-$ adb shell dumpsys activity activities |grep Focused
+$ adb shell dumpsys activity activities |grep 'Focused\|ResumedActivity'
 ```
 
 Currently tested devices
@@ -49,6 +49,39 @@ Currently tested devices
 * Huawei
 
 Patches for more devices are welcome!
+
+More ROM or devices support
+---------------------------
+You can add more settings support new rom or devices, just add `appwhitelist.json` file into your app's asset root directory.
+
+The library will read and resolve `appwhitelist.json` which have higher priority to launch setting intent.
+
+Below is an example
+
+```json
+{
+  "auto_start": [{
+    "pkg": "com.huawei.systemmanager",
+    "cls": "com.huawei.systemmanager.appcontrol.activity.StartupAppControlActivity"
+  }, {
+    "pkg": "com.huawei.xxx",
+    "cls": "com.huawei.xxx.XActivity"
+  }],
+  "battery_saver": [],
+  "mem_acc": [],
+  "notification": []
+}
+```
+* A functionality for different ROMs grouped together
+* There are four different functionality settings, include the functionality you want to add as main key
+    * `auto_start` for auto start settings
+    * `battery_saver` for battery saver settings
+    * `mem_acc` for memory acceleration settings
+    * `notification` for notification settings
+* In order to support multiple roms or manufactures, each functionality include a list of component for settings, the library will resolve them
+from begin to end until a resolvable intent is found, then the library will `startActivity` with
+this resolved intent and lead the user to settings page
+
 
 License
 ------

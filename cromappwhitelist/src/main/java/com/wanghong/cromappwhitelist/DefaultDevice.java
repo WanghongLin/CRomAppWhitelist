@@ -24,21 +24,21 @@ import android.content.ComponentName;
 public class DefaultDevice extends AbstractDevice {
     @Override
     protected ComponentName componentForAutoStartSetting() {
-        return null;
+        return super.componentForAutoStartSetting();
     }
 
     @Override
     protected ComponentName componentForBatterySaverSetting() {
-        return null;
+        return super.componentForBatterySaverSetting();
     }
 
     @Override
     protected ComponentName componentForMemoryAccelerationSetting() {
-        return null;
+        return super.componentForMemoryAccelerationSetting();
     }
 
     @Override
     protected ComponentName componentForNotificationSetting() {
-        return null;
+        return super.componentForNotificationSetting();
     }
 }
