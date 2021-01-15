@@ -9,7 +9,7 @@
       "cls": "com.meizu.safe.permission.SmartBGActivity"
     },
     {
-      "pkg": "com.huawei.systemmanager",
+      "pkg": "com.miui.securitycenter",
       "cls": "com.miui.permcenter.autostart.AutoStartManagementActivity"
     }
   ],
