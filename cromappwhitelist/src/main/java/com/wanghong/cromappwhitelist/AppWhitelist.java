@@ -94,19 +94,19 @@ public class AppWhitelist {
         createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performNotificationSetting(context);
     }
 
-    public static boolean hasAutoStartSetting() {
-        return createCurrentDevice().hasAutoStartSetting();
+    public static boolean hasAutoStartSetting(Context context) {
+        return createCurrentDevice().hasAutoStartSetting(context);
     }
 
-    public static boolean hasBatterySaverSetting() {
-        return createCurrentDevice().hasBatterySaverSetting();
+    public static boolean hasBatterySaverSetting(Context context) {
+        return createCurrentDevice().hasBatterySaverSetting(context);
     }
 
-    public static boolean hasMemoryAccelerationSetting() {
-        return createCurrentDevice().hasMemoryAccelerationSetting();
+    public static boolean hasMemoryAccelerationSetting(Context context) {
+        return createCurrentDevice().hasMemoryAccelerationSetting(context);
     }
 
-    public static boolean hasNotificationSetting() {
-        return createCurrentDevice().hasNotificationSetting();
+    public static boolean hasNotificationSetting(Context context) {
+        return createCurrentDevice().hasNotificationSetting(context);
     }
 }

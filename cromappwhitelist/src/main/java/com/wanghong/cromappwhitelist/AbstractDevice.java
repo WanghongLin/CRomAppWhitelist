@@ -139,19 +139,27 @@ public abstract class AbstractDevice {
         }
     }
 
-    public boolean hasAutoStartSetting() {
+    public boolean hasAutoStartSetting(Context context) {
+        this.context = context;
+        ensureWhitelistConfig();
         return this.componentForAutoStartSetting() != null;
     }
 
-    public boolean hasBatterySaverSetting() {
+    public boolean hasBatterySaverSetting(Context context) {
+        this.context = context;
+        ensureWhitelistConfig();
         return this.componentForBatterySaverSetting() != null;
     }
 
-    public boolean hasMemoryAccelerationSetting() {
+    public boolean hasMemoryAccelerationSetting(Context context) {
+        this.context = context;
+        ensureWhitelistConfig();
         return this.componentForMemoryAccelerationSetting() != null;
     }
 
-    public boolean hasNotificationSetting() {
+    public boolean hasNotificationSetting(Context context) {
+        this.context = context;
+        ensureWhitelistConfig();
         return this.componentForNotificationSetting() != null;
     }
 
