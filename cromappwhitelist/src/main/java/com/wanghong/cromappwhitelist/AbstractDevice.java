@@ -30,7 +30,7 @@ import android.widget.Toast;
 public abstract class AbstractDevice {
 
     private static final String TAG = "AbstractDevice";
-    private Intent extrasHolderIntent = new Intent();
+    private final Intent extrasHolderIntent = new Intent();
     private Context context;
     private AppWhitelistConfig whitelistConfig;
 

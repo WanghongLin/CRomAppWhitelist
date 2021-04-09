@@ -1,6 +1,6 @@
 CRomAppWhitelist
-======
-[ ![Download](https://api.bintray.com/packages/wanghonglin/maven/crom-app-whitelist/images/download.svg?version=0.1.1) ](https://bintray.com/wanghonglin/maven/crom-app-whitelist/0.1.1/link)
+================
+[ ![Download](https://api.bintray.com/packages/wanghonglin/maven/crom-app-whitelist/images/download.svg?version=0.1.2) ](https://bintray.com/wanghonglin/maven/crom-app-whitelist/0.1.2/link)
 
 Quick setting to add your app to whitelist for Chinese Android ROM
 
@@ -23,7 +23,7 @@ How to use
 This library has been published to jCenter, just apply following dependency in your gradle file
 
 ```gradle
-implementation 'com.wanghong.cromappwhitelist:crom-app-whitelist:0.1.1'
+implementation 'com.wanghong.cromappwhitelist:crom-app-whitelist:0.1.2'
 ```
 
 Then the following code will navigate you the the specific whitelist feature settings.
