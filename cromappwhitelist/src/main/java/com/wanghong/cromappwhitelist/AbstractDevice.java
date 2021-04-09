@@ -139,6 +139,30 @@ public abstract class AbstractDevice {
         }
     }
 
+    public boolean hasAutoStartSetting(Context context) {
+        this.context = context;
+        ensureWhitelistConfig();
+        return this.componentForAutoStartSetting() != null;
+    }
+
+    public boolean hasBatterySaverSetting(Context context) {
+        this.context = context;
+        ensureWhitelistConfig();
+        return this.componentForBatterySaverSetting() != null;
+    }
+
+    public boolean hasMemoryAccelerationSetting(Context context) {
+        this.context = context;
+        ensureWhitelistConfig();
+        return this.componentForMemoryAccelerationSetting() != null;
+    }
+
+    public boolean hasNotificationSetting(Context context) {
+        this.context = context;
+        ensureWhitelistConfig();
+        return this.componentForNotificationSetting() != null;
+    }
+
     /**
      * Provide component for auto start setting
      * @return a component or null if this feature is absent in the implemented device

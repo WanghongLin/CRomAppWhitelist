@@ -58,6 +58,10 @@ public class AppWhitelist {
         return (T) defaultDevice;
     }
 
+    private @NonNull static AbstractDevice createCurrentDevice() {
+        return createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase()));
+    }
+
     /**
      * Go to setting for auto start
      * @param context activity context
@@ -88,5 +92,21 @@ public class AppWhitelist {
      */
     public static void settingForNotification(Context context) {
         createForDevice(DEVICES_CLASS_MAP.get(Build.MANUFACTURER.toUpperCase())).performNotificationSetting(context);
+    }
+
+    public static boolean hasAutoStartSetting(Context context) {
+        return createCurrentDevice().hasAutoStartSetting(context);
+    }
+
+    public static boolean hasBatterySaverSetting(Context context) {
+        return createCurrentDevice().hasBatterySaverSetting(context);
+    }
+
+    public static boolean hasMemoryAccelerationSetting(Context context) {
+        return createCurrentDevice().hasMemoryAccelerationSetting(context);
+    }
+
+    public static boolean hasNotificationSetting(Context context) {
+        return createCurrentDevice().hasNotificationSetting(context);
     }
 }
